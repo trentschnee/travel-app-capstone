@@ -13,8 +13,6 @@ app.use(cors());
 app.use(express.static('dist'))
 
 
-
-
 app.get('/', function (req, res) {
     res.sendFile('dist/index.html')
 })
@@ -28,14 +26,14 @@ app.get('/delTrip', function (req, res) {
 
 app.post('/postTrip', function (req, res) {
     trip = req.body;
-    res.send(trip)
-
-   
+    res.send(trip)  
 })
 
+
+export function doThis (){ 
+        console.log('Example app listening on port 8081!')
+}
 // designates what port the app will listen to for incoming requests
-app.listen(8081, function () {
-    console.log('Example app listening on port 8081!')
-})
+app.listen(8081,  doThis)
 
 
