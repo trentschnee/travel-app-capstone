@@ -10,7 +10,7 @@ This travel app is very easy to develop off of. All you need to do are the follo
 
 
 ### Step 1: Clone the repo
-`git clone https://github.com/trentschnee/travel-app.git`
+`git clone https://github.com/trentschnee/travel-app-capstone.git`
 
 ### Step 3: Install the needed packages
 `npm install`  or `yarn install`
