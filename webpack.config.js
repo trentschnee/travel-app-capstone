@@ -2,11 +2,12 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var path = require('path');
 
 module.exports = {
-    entry: './src/index.js',
+    entry: './src/client/index.js',
     mode: 'development',
-  output: {
-    path: path.resolve(__dirname, './dist'),
-    filename: 'main.js'
+    devtool: 'source-map',
+    output: {
+        libraryTarget: 'var',
+        library: 'Client'
     },
     module: {
         rules: [
@@ -23,7 +24,7 @@ module.exports = {
     }
   ,
 plugins: [ new HtmlWebpackPlugin({
-    template: "./src/index.html",
+    template: "./src/client/html/views/index.html",
     filename: "./index.html",
 })]
 };

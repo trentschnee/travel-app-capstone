@@ -1,0 +1,54 @@
+body {
+    
+    background-color: #1fc8db;
+    background-image: linear-gradient(to  bottom right, #9fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+}
+
+section {
+    display: flex;
+    justify-content: space-around;
+    margin: 2em auto;
+    padding: 2em;
+    max-width:95%;
+    background-color: whitesmoke;
+    box-shadow: 1rem 1rem 2rem rgba(0,0,0,.1);
+    border-radius: 0.3em;
+}
+
+
+.details{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    p{
+        font-weight: 600;
+        line-height: 1.3em;
+    padding:1em;
+    }
+}
+.delButton{
+    display:contents;
+    color:red;
+}
+img{
+    width: 15vw;
+    border-radius: 0.3em;
+}
+h1 {
+    font-size:2.5em;
+    font-weight: 600;
+        }
+h2{
+    font-size:1.3em;
+}

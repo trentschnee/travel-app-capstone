@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "Travel app that obtains a desired trip location / data from the user and displays the weather/image of the location using information from external API's.",
   "scripts": {
+    "test": "jest",
+    "start": "node src/server/server.js",
     "build": "webpack-dev-server --config webpack.config.js --watch"
   },
   "author": "Trent Schneweis",
@@ -20,6 +22,8 @@
     "webpack-cli": "^3.3.11"
   },
   "dependencies": {
+    "cors": "^2.8.5",
+    "jest": "^26.0.1",
     "style-loader": "^1.2.1",
     "webpack-dev-server": "^3.10.3"
   }

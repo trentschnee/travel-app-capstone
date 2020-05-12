@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Getting Started</title>
+  </head>
+  <body>
+    <header>
+      <h1>
+           Travel Planner
+       </h1>
+       <p>&#8212; To get started, just type in your location and select when you want to depart. The application will do the rest!</p>
+     
+   </header>
+
+  
+          <main>
+              <section>
+                  <form class="travel" onsubmit="return Client.handleSubmit(event)">
+                      <input id="location" type="text" name="location" value="" placeholder="Example: Paris, France"> </input>
+                      <input id="departure-date" type="date" name="departure-date" value="" placeholder="Departure Date"> </input>
+                      <input type="submit" name="" value="Save Trip" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)">
+                  </form>
+                </section>
+  
+              <section id="detailsPanel">
+             <div class="img" id="imgPane">
+              
+             </div>
+             <div class="details" id="detailsPane"> <p>There are currently no results.</p></div>
+               
+              </section>
+          </main>
+          <footer>
+            <p>© Copyright 2020, Trent Schneweis</p> 
+          </footer>
+  </body>
+</html>
