@@ -66,7 +66,7 @@ const getPicData = async (lQuery) => {
     }
 };
 
-
+// This function will take in an object and then manipulate the dom according to the object's value.
 const changeUi = (data) => {
     var src = document.getElementById("imgPane");
     const detailsPane = document.getElementById('detailsPane');
@@ -104,13 +104,13 @@ document.addEventListener('DOMContentLoaded', () => {
         (Object.keys(tripData).length !== 0) ? changeUi(tripData) : null;
     })
 })
+// Async function which does a promise chain of dependent promises and then posts the trip to the server
 const handleTripData = async (location, date) => {
     let postObject = {};
     const resultCity = await (getCityData(location))
     const lat = resultCity.geonames[0].lat;
     const lon = resultCity.geonames[0].lng;
     const resultWeather = await (getWeatherData(lat, lon));
-    console.log('this', resultWeather)
     const queryName = `${resultWeather.data[0].city_name}, ${resultWeather.data[0].country_code}`;
     const resultPic = await (getPicData(resultWeather.data[0].city_name));
     postObject.name = queryName;

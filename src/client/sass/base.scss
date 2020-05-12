@@ -38,6 +38,9 @@ section {
     }
 }
 .delButton{
+    &:hover{
+        font-weight: bold;
+    }
     display:contents;
     color:red;
 }
