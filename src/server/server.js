@@ -30,10 +30,14 @@ app.post('/postTrip', function (req, res) {
 })
 
 
-export function doThis (){ 
+function doThis (){ 
         console.log('Example app listening on port 8081!')
 }
 // designates what port the app will listen to for incoming requests
-app.listen(8081,  doThis)
+app.listen(8081, doThis)
+
+module.exports = {
+    doThis
+}
 
 

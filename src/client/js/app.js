@@ -72,27 +72,25 @@ const getPicData = async (lQuery) => {
  function changeUi(data){
     var src = document.getElementById("imgPane");
     const detailsPane = document.getElementById('detailsPane');
-    const detailsPanel = document.getElementById('detailsPanel');
-    var img = document.createElement("img");
+    const delButtonPane = document.getElementById('delButtonPane');
     // If the data object is not empty, assign the variables and add the details
     if (Object.keys(data).length !== 0) {
         const { name, image, currentTemp, departureDate, currentForecast } = data;
-        img.src = image;
 
         detailsPane.innerHTML = ` <p>You're going to: <span id="location-details">${name}</span></p>
         <p>You're departing on: <span id="departure-date-details">${departureDate}</span></p>
         <div class="weatherInfo">
           <p>Current weather is: <span id="current-weather-details">${currentTemp} °F</span></p> <p>Forecast for today: <span id="current-weather-details">${currentForecast}</span></p>`;
-        detailsPanel.insertAdjacentHTML('beforeend', `<button id="delButton" class="delButton" onclick="return Client.handleDeleteData()">Delete</button>`);
-        src.appendChild(img);
+        delButtonPane.innerHTML = `<button id="delButton" class="delButton" onclick="return Client.handleDeleteData()">Delete</button>`;
+    
+        src.innerHTML = `<img src="${image}">`;
 
     }
     else {
         const detailsPane = document.getElementById('detailsPane');
         detailsPane.innerHTML = ` <p>There are currently no results.</p>`;
-        img.src = '';
         document.getElementById("delButton").remove();
-        src.replaceChild(img, src.childNodes[0]);
+        src.innerHTML = `<img src="">`;
     }
 
 
