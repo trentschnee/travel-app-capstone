@@ -75,7 +75,6 @@ const changeUi = (data) => {
     // If the data object is not empty, assign the variables and add the details
     if (Object.keys(data).length !== 0) {
         const { name, image, currentTemp, departureDate, currentForecast } = data;
-
         img.src = image;
 
         detailsPane.innerHTML = ` <p>You're going to: <span id="location-details">${name}</span></p>
@@ -83,7 +82,7 @@ const changeUi = (data) => {
         <div class="weatherInfo">
           <p>Current weather is: <span id="current-weather-details">${currentTemp} °F</span></p> <p>Forecast for today: <span id="current-weather-details">${currentForecast}</span></p>`;
         detailsPanel.insertAdjacentHTML('beforeend', `<button id="delButton" class="delButton" onclick="return Client.handleDeleteData()">Delete</button>`);
-        src.replaceChild(img, src.childNodes[0]);
+        src.appendChild(img);
 
     }
     else {

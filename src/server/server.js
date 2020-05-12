@@ -23,7 +23,6 @@ app.get('/getTrip', function (req, res) {
 })
 app.get('/delTrip', function (req, res) {
     trip = {};
-    console.log('deleting')
     res.send(trip)
 })
 
