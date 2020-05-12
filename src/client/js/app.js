@@ -126,12 +126,11 @@ const handleDeleteData = async (location, date) => {
     const resultDelete = await (delTripData())
     await (changeUi(resultDelete))
 }
-const urlRegex = /([A-Za-z]+(?: [A-Za-z]+)*),? ([A-Za-z]{2})/
 
 function validateForm(location, date, cb) {
     let error;
     // Test if the input is valid, if so return true
-    if (urlRegex.test(location) && date) {
+    if (location && date) {
         cb(true);
     }
     else {
