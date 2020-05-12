@@ -2,22 +2,8 @@
 // API key
 const pixabayApiKey = '11454438-c9bc7864fb50abf1efb41c3e2';
 const weatherBitsApiKey = 'd7e14b30873b423782abf240a013dc63';
+// Geonames API will not let me use my personal username for some reason so I am using some one else's. I've registered and everything and it still wont work. My username is trentschnee
 const geoNameUser = 'timetotravel';
-function validateZipCode(elementValue) {
-    var zipCodePattern = /^\d{5}$|^\d{5}-\d{4}$/;
-    return zipCodePattern.test(elementValue);
-}
-// async function getPicData(zip) {
-//     const fetchResult = await fetch(`http://localhost:8081/wData`,{
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json;charset=utf-8'
-//         },
-//         body: JSON.stringify(zip)
-//     });
-//     let resolvedResult = await fetchResult.json();
-//     return resolvedResult;
-// }
 const getRecentTrip = async () => {
     const getTripData = await fetch(`http://localhost:8081/getTrip`);
     try {
@@ -113,7 +99,7 @@ const changeUi = (data) => {
 
 // When the DOM is loaded, update all elements
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     getRecentTrip().then((tripData) => {
         (Object.keys(tripData).length !== 0) ? changeUi(tripData) : null;
     })
