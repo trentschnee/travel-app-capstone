@@ -37,14 +37,14 @@ const delTripData = async () => {
     }
 };
 const postTrip = async (tripObj) => {
-    const postTripData = await fetch(`http://localhost:8081/postTrip`,{
+    const postTripData = await fetch(`http://localhost:8081/postTrip`, {
         method: "POST",
         credentials: "same-origin",
         headers: {
-          "Content-Type": "application/json;charset=UTF-8"
+            "Content-Type": "application/json;charset=UTF-8"
         },
         body: JSON.stringify(tripObj)
-      });
+    });
     try {
         return await postTripData.json();
     }
@@ -88,53 +88,53 @@ const changeUi = (data) => {
     var img = document.createElement("img");
     // If the data object is not empty, assign the variables and add the details
     if (Object.keys(data).length !== 0) {
-        const { name, image, currentTemp, departureDate,currentForecast } = data;
-    
+        const { name, image, currentTemp, departureDate, currentForecast } = data;
+
         img.src = image;
-       
+
         detailsPane.innerHTML = ` <p>You're going to: <span id="location-details">${name}</span></p>
         <p>You're departing on: <span id="departure-date-details">${departureDate}</span></p>
         <div class="weatherInfo">
           <p>Current weather is: <span id="current-weather-details">${currentTemp} °F</span></p> <p>Forecast for today: <span id="current-weather-details">${currentForecast}</span></p>`;
         detailsPanel.insertAdjacentHTML('beforeend', `<button id="delButton" class="delButton" onclick="return Client.handleDeleteData()">Delete</button>`);
         src.replaceChild(img, src.childNodes[0]);
-        
+
     }
-    else { 
+    else {
         const detailsPane = document.getElementById('detailsPane');
         detailsPane.innerHTML = ` <p>There are currently no results.</p>`;
         img.src = '';
         document.getElementById("delButton").remove();
         src.replaceChild(img, src.childNodes[0]);
     }
-    
-   
+
+
 }
 
 // When the DOM is loaded, update all elements
 document.addEventListener('DOMContentLoaded', () => {
+    
     getRecentTrip().then((tripData) => {
-        console.log(tripData);
         (Object.keys(tripData).length !== 0) ? changeUi(tripData) : null;
     })
 })
 const handleTripData = async (location, date) => {
-        let postObject = {};
-        const resultCity = await (getCityData(location))
-        const lat = resultCity.geonames[0].lat;
-        const lon = resultCity.geonames[0].lng;
+    let postObject = {};
+    const resultCity = await (getCityData(location))
+    const lat = resultCity.geonames[0].lat;
+    const lon = resultCity.geonames[0].lng;
     const resultWeather = await (getWeatherData(lat, lon));
     console.log('this', resultWeather)
-        const queryName = `${resultWeather.data[0].city_name}, ${resultWeather.data[0].country_code}`;
-        const resultPic = await (getPicData(resultWeather.data[0].city_name));
-        postObject.name = queryName;
-        postObject.image = resultPic.hits[0].webformatURL;
-        postObject.currentTemp = resultWeather.data[0].temp;
-        postObject.currentForecast = resultWeather.data[0].weather.description;
-        postObject.departureDate = date;
-        //post the trip
-        const resultpostTrip = await postTrip(postObject);
-        await (changeUi(resultpostTrip))
+    const queryName = `${resultWeather.data[0].city_name}, ${resultWeather.data[0].country_code}`;
+    const resultPic = await (getPicData(resultWeather.data[0].city_name));
+    postObject.name = queryName;
+    postObject.image = resultPic.hits[0].webformatURL;
+    postObject.currentTemp = resultWeather.data[0].temp;
+    postObject.currentForecast = resultWeather.data[0].weather.description;
+    postObject.departureDate = date;
+    //post the trip
+    const resultpostTrip = await postTrip(postObject);
+    await (changeUi(resultpostTrip))
 }
 const handleDeleteData = async (location, date) => {
     const resultDelete = await (delTripData())
@@ -142,30 +142,30 @@ const handleDeleteData = async (location, date) => {
 }
 const urlRegex = /([A-Za-z]+(?: [A-Za-z]+)*),? ([A-Za-z]{2})/
 
-function validateForm(location,date,cb) {
+function validateForm(location, date, cb) {
     let error;
     // Test if the input is valid, if so return true
-   if(urlRegex.test(location) && date) {
-       cb(true);
+    if (urlRegex.test(location) && date) {
+        cb(true);
     }
-   else {
-       !date ? error = 'Empty date' : error = 'Invalid location format. Enter in location like so -> "Paris, France"'
-    cb(false,error);
+    else {
+        !date ? error = 'Empty date' : error = 'Invalid location format. Enter in location like so -> "Paris, France"'
+        cb(false, error);
     }
 }
 
 function handleSubmit(event) {
     event.preventDefault();
-    
+
     const location = document.getElementById('location').value;
     const date = document.getElementById('departure-date').value;
-    validateForm(location, date, (response,error) => {
-        response ? handleTripData(location,date) : alert(error)
-       ;
+    validateForm(location, date, (response, error) => {
+        response ? handleTripData(location, date) : alert(error)
+            ;
     })
-    
+
 
 }
 export {
-    handleSubmit,handleDeleteData
+    handleSubmit, handleDeleteData
 }
