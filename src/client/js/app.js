@@ -4,6 +4,8 @@ const pixabayApiKey = '11454438-c9bc7864fb50abf1efb41c3e2';
 const weatherBitsApiKey = 'd7e14b30873b423782abf240a013dc63';
 // Geonames API will not let me use my personal username for some reason so I am using some one else's. I've registered and everything and it still wont work. My username is trentschnee
 const geoNameUser = 'timetotravel';
+
+
 const getRecentTrip = async () => {
     const getTripData = await fetch(`http://localhost:8081/getTrip`);
     try {
@@ -67,7 +69,7 @@ const getPicData = async (lQuery) => {
 };
 
 // This function will take in an object and then manipulate the dom according to the object's value.
-const changeUi = (data) => {
+ function changeUi(data){
     var src = document.getElementById("imgPane");
     const detailsPane = document.getElementById('detailsPane');
     const detailsPanel = document.getElementById('detailsPanel');
@@ -151,5 +153,5 @@ function handleSubmit(event) {
 
 }
 export {
-    handleSubmit, handleDeleteData
+    handleSubmit, handleDeleteData, changeUi
 }
