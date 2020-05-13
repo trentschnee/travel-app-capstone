@@ -1,4 +1,4 @@
-#                / .        App
+#               Travel App
 
 This application is the capstone project for the Front-end Developer nanodegree for Udacity. It lets you put in a location and time, then returns weather information for that particular location
 
